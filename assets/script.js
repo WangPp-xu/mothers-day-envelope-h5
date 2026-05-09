@@ -56,6 +56,20 @@ function getParamsData() {
   return { name, msg, from };
 }
 
+function isShareMode() {
+  const params = new URLSearchParams(window.location.search);
+  // 只要是“生成专属链接”打开，或链接里带了 name/msg/from，就进入纯展示模式。
+  // 纯展示模式会隐藏上方可编辑区域，只保留标题、信封和动画。
+  return params.get('mode') === 'share' || params.has('name') || params.has('msg') || params.has('from');
+}
+
+function applyShareModeIfNeeded() {
+  if (isShareMode()) {
+    document.body.classList.add('share-mode');
+    shareBox.classList.remove('show');
+  }
+}
+
 function setInputs(data) {
   nameInput.value = data.name;
   msgInput.value = data.msg;
@@ -155,6 +169,7 @@ function generateCardWithoutToast() {
 function makeDedicatedLink() {
   generateCardWithoutToast();
   const url = new URL(window.location.href);
+  url.searchParams.set('mode', 'share');
   url.searchParams.set('name', cardData.name);
   url.searchParams.set('msg', cardData.msg);
   url.searchParams.set('from', cardData.from);
@@ -262,6 +277,7 @@ function init() {
   cardData = getParamsData();
   setInputs(cardData);
   renderStaticLetter(cardData);
+  applyShareModeIfNeeded();
 
   applyBtn.addEventListener('click', generateCard);
   makeLinkBtn.addEventListener('click', makeDedicatedLink);
