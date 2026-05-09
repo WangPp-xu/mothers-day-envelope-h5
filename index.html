@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#ffc1d7" />
+  <title>母亲节快乐｜给妈妈的一封信</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-btn" id="musicBtn" aria-label="播放音乐">♫</button>
+
+  <main class="page">
+    <div class="petal-layer" id="petalLayer"></div>
+    <div class="heart-layer" id="heartLayer"></div>
+
+    <section class="hero-card">
+      <div class="sticker-row top-stickers">
+        <span class="sticker">🌹</span>
+        <span class="sticker small">✨</span>
+        <span class="sticker">💗</span>
+        <span class="sticker small">🌸</span>
+      </div>
+
+      <h1 class="hand-title" id="pageTitle">母亲节快乐</h1>
+      <p class="subtitle">一封藏在白色信封里的专属祝福</p>
+
+      <div class="mini-card creator-panel">
+        <label>妈妈称呼</label>
+        <input id="nameInput" type="text" placeholder="例如：妈妈 / 妈咪 / 最爱的妈妈" />
+
+        <label>想写的话</label>
+        <textarea id="msgInput" placeholder="输入你想写给妈妈的话"></textarea>
+
+        <label>落款</label>
+        <input id="fromInput" type="text" placeholder="例如：爱您的女儿 / 您的孩子" />
+
+        <div class="button-row">
+          <button class="pink-btn" id="applyBtn">生成贺卡</button>
+          <button class="white-btn" id="makeLinkBtn">生成专属链接</button>
+        </div>
+      </div>
+
+      <section class="scene" aria-label="母亲节信封贺卡">
+        <div class="letter-paper" id="letterPaper">
+          <div class="paper-pin">LOVE YOU MOM</div>
+          <div class="letter-to" id="letterTo">To 我最亲爱的妈妈：</div>
+          <div class="type-area" id="typeArea"></div>
+          <div class="letter-footer">
+            <span id="letterFrom">爱您的我</span>
+            <span id="letterDate"></span>
+          </div>
+        </div>
+
+        <div class="envelope-wrap" id="envelopeWrap">
+          <div class="fly-shadow"></div>
+          <div class="flap" id="flap"></div>
+          <div class="envelope-body"></div>
+          <div class="seal" id="seal">❤</div>
+          <div class="open-tip" id="openTip">点我打开</div>
+        </div>
+      </section>
+
+      <div class="bottom-tools">
+        <button class="pink-btn" id="copyBlessingBtn">复制祝福语</button>
+        <button class="white-btn" id="toggleBtn">合上 / 打开</button>
+      </div>
+
+      <div class="share-box" id="shareBox">
+        <div class="share-title">你的专属链接</div>
+        <textarea id="shareLink" readonly></textarea>
+        <button class="pink-btn full" id="copyLinkBtn">复制链接发到微信</button>
+        <p class="share-note">提示：上传到 GitHub Pages 后，把上面链接里的域名替换成你的真实网址。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">已复制</div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
